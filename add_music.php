@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('config/config.php');
+require('config/config-sample.php');
 require('model/functions.fn.php');
 
 if( isset($_FILES['music']) && !empty($_FILES['music']) && 
@@ -15,7 +15,12 @@ if( isset($_FILES['music']) && !empty($_FILES['music']) &&
 			$filename = md5(uniqid(rand(), true));
 			$destination = "musics/{$filename}.{$_SESSION['id']}.{$ext}";
 
-			// TODO
+			$addMusicState = addMusic($db, $_SESSION['id'], $_POST['title'], $destination);
+			if($addMusicState) {
+				header('Location: dashboard.php');
+			} else {
+				$error = 'Erreur, le fichier n\'a pas réussi à être ajouté !';
+			}
 
 		} else {
 			$error = 'Erreur, le fichier n\'a pas une extension autorisée !';
