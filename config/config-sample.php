@@ -1,9 +1,9 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'IIM_Git_SoundCloud';
-$user = 'username';
-$pass = 'password';
+$host = 'localhost:3308';
+$dbname = 'iim_git_soundcloud';
+$user = 'root';
+$pass = '';
 
 
 try{
@@ -13,4 +13,5 @@ catch(Exception $e)
 {
 	echo 'Erreur : '.$e->getMessage().'<br />';
 	echo 'N° : '.$e->getCode();
+	exit;
 }
